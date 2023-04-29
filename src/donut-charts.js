@@ -48,7 +48,7 @@ export default function drawDonutChart(data) {
     const pieGenerator = d3.pie().value((d) => d.sales)
     const annotatedData = pieGenerator(formattedData)
 
-    console.log(annotatedData)
+    // console.log(annotatedData)
 
     const arcGenerator = d3
       .arc()
