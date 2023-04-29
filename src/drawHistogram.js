@@ -1,4 +1,5 @@
 import * as d3 from "d3"
+import { xScale, yScale, binGenerator } from "./scales"
 
 // Colors
 const slateGray = "#305252"
@@ -7,13 +8,13 @@ const white = "#faffff"
 const womenColor = "#826C7F"
 const menColor = "#FA7E61"
 
-export default function drawHistogram(data) {
-  const margin = { top: 40, right: 30, bottom: 50, left: 40 }
-  const width = 1000
-  const height = 500
-  const innerWidth = width - margin.left - margin.right
-  const innerHeight = height - margin.top - margin.bottom
+const margin = { top: 40, right: 30, bottom: 50, left: 40 }
+const width = 1000
+const height = 500
+export const innerWidth = width - margin.left - margin.right
+export const innerHeight = height - margin.top - margin.bottom
 
+export default function drawHistogram(data) {
   // Append the SVG container
   const svg = d3
     .select("#histogram")
@@ -25,22 +26,7 @@ export default function drawHistogram(data) {
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`)
 
-  const binGenerator = d3.bin().value((d) => d.salary)
   const bins = binGenerator(data)
-
-  const minSalary = bins[0].x0
-  const maxSalary = bins[bins.length - 1].x1
-  const xScale = d3
-    .scaleLinear()
-    .domain([minSalary, maxSalary])
-    .range([0, innerWidth])
-  const binsMaxLength = d3.max(bins, (d) => d.length)
-  const yScale = d3
-    .scaleLinear()
-    .domain([0, binsMaxLength])
-    .range([innerHeight, 0])
-    .nice()
-
   innerChart
     .selectAll("rect")
     .data(bins)

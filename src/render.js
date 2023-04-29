@@ -1,5 +1,8 @@
 import * as d3 from "d3"
 import drawHistogram from "./drawHistogram"
+import populateFilters from "./interactions"
+import { createScales } from "./scales"
+
 const getRandomSalary = (salary) => {
   const lowerLimit = +salary.slice(1, salary.indexOf(" -")).replace(",", "")
   const upperLimit = +salary.slice(salary.indexOf(" $") + 2).replace(",", "")
@@ -17,5 +20,7 @@ export default async function render() {
     }
   })
 
+  createScales(data)
   drawHistogram(data)
+  populateFilters(data)
 }
