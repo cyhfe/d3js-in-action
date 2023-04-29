@@ -1,47 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>
+      Earnings of Data Visualization practitioners | D3.js in Action
+    </title>
   </head>
   <body>
     <div class="container">
-      <h1>Visualizing 40 Years of Music Industry Sales</h1>
+      <h1>Earnings of Data Visualization practitioners</h1>
       <div class="intro">
-        This project visualizes the music sales in the United States by format
-        between 1973 and 2019. These formats range from physical supports like
-        <span class="support support-vinyl">vinyl</span>,
-        <span class="support support-eigth-track">8-track</span>,
-        <span class="support support-cassette">cassette</span>, and
-        <span class="support support-cd">cd</span>, to music consumed digitally,
-        with <span class="support support-download">downloads</span> and
-        <span class="support support-streaming">streaming services</span>. The
-        category <span class="support support-other">other</span> includes less
-        prominent sources of revenue like music videos (physical),
-        synchronization, and royalties.
+        In their
+        <a href="https://www.datavisualizationsociety.org/survey"
+          >2021 State of the Industry Survey</a
+        >, the
+        <a href="https://www.datavisualizationsociety.org"
+          >Data Visualization Society</a
+        >
+        asked data visualization practitioners for their pre-tax yearly pay in
+        US dollars. This project visualizes the answers to this question for
+        respondents living in the United States.
       </div>
-      <div id="donut"></div>
-      <div id="streamgraph"></div>
-      <div id="bars"></div>
-      <div class="legend-container"></div>
+
+      <h2>Distribution of annual salaries</h2>
+      <div class="intro">
+        The annual salaries vary between $0 and $240,000, with most
+        professionals earning between $60,000 and $140,000. They almost form a
+        normal distribution, slightly skewed to the right.
+      </div>
+      <div id="histogram" class="responsive-svg-container"></div>
+
+      <h2>Comparison between women and men</h2>
+      <div class="intro">
+        We observe that <span class="text-legend women">women</span>'s salary is
+        slightly lower than <span class="text-legend men">men</span>'s, with
+        medians being respectively $90,000 and $110,000. 50% of the
+        <span class="text-legend women">women</span> earn between $70,000 and
+        $110,000 per year, while 50% of the
+        <span class="text-legend men">men</span> earn between $90,000 and
+        $150,000.
+      </div>
+      <div class="row">
+        <div class="col col-6">
+          <div id="pyramid" class="responsive-svg-container"></div>
+        </div>
+        <div class="col col-6">
+          <div id="boxplot" class="responsive-svg-container"></div>
+        </div>
+      </div>
+
+      <h2>Comparison between roles</h2>
+      <div class="intro">
+        The violin charts below represent the salary distribution for five
+        leading data visualization roles: analyst, developer, designer,
+        scientist, and leadership. We observe that analysts have the lowest
+        average salary, while respondents with a leadership position have the
+        highest. The thicker a violin is, the more respondents it contains for a
+        specific salary bracket. On the contrary, thinner plots have a lower
+        number of responses.
+      </div>
+      <div id="violin" class="responsive-svg-container"></div>
+
       <div class="source">
+        <h3>Data source</h3>
         <p>
-          Data Source:
-          <a
-            href="https://data.world/makeovermonday/2020w21-visualizing-40-years-of-music-industry-sales"
-            >MakeoverMonday 2020/W21</a
+          <a href="https://www.datavisualizationsociety.org/survey"
+            >State of the industry survey 2021 - Data Visualization Society</a
           >
         </p>
+        <h3>Methodology</h3>
         <p>
-          Inspiration for the dataviz layout:
-          <a href="https://www.makeovermonday.co.uk/week-21-2020/"
-            >Submission of Laura Elliot</a
-          >
+          For comparison purposes, this project visualizes only the answers
+          provided by salaried professionals living in the United States (788
+          respondents). Thirty-three respondents declared earning $240,000 or
+          more annually and are not represented in the visualizations.
+        </p>
+        <p>
+          The pyramid chart and the boxplot present only the data from
+          respondents identifying as women or men (735 respondents).
         </p>
       </div>
     </div>
-    <script type="module" src="/main.js"></script>
+    <script src="./main.js" type="module"></script>
   </body>
 </html>
